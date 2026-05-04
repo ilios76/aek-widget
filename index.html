@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AEK Corner Radio Widget</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .station {
+      display: flex;
+      align-items: center;
+      background: #111;
+      padding: 12px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid #333;
+    }
+
+    .station img {
+      width: 50px;
+      height: 50px;
+      margin-right: 12px;
+    }
+
+    .station:hover {
+      background: #222;
+    }
+
+    #player {
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2 style="text-align:center; margin-top:20px;">AEK Corner Radio</h2>
+
+  <div class="station" onclick="playStation('dromos')">
+    <img src="rs/producers/dromos.png">
+    <div>Dromos 89.8</div>
+  </div>
+
+  <div class="station" onclick="playStation('pepper')">
+    <img src="rs/producers/pepper.png">
+    <div>Pepper 96.6</div>
+  </div>
+
+  <div class="station" onclick="playStation('red')">
+    <img src="rs/producers/red.png">
+    <div>Red 96.3</div>
+  </div>
+
+  <div class="station" onclick="playStation('melodia')">
+    <img src="rs/producers/melodia.png">
+    <div>Μελωδία 99.2</div>
+  </div>
+
+  <div class="station" onclick="playStation('eraspor')">
+    <img src="rs/producers/eraspor.png">
+    <div>ΕΡΑ ΣΠΟΡ 101.8</div>
+  </div>
+
+  <audio id="player" controls></audio>
+
+  <script>
+    function playStation(station) {
+      const audio = document.getElementById("player");
+      audio.src = `/.netlify/functions/stream?station=${station}`;
+      audio.play();
+    }
+  </script>
+
+</body>
+</html>
